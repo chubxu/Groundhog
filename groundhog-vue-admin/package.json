@@ -1,9 +1,9 @@
 {
-  "name": "arco-design-pro-vue",
-  "description": "Arco Design Pro for Vue",
+  "name": "groundhog-vue-admin",
+  "description": "groundhog-vue-admin, developed by Arco Design Pro",
   "version": "1.0.0",
   "private": true,
-  "author": "ArcoDesign Team",
+  "author": "chubxu",
   "license": "MIT",
   "scripts": {
     "dev": "vite --config ./config/vite.config.dev.ts",
