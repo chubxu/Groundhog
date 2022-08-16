@@ -1,5 +1,5 @@
 export default {
-  'login.form.title': '登录 Arco Design Pro',
+  'login.form.title': '登录 Groundhog',
   'login.form.userName.errMsg': '用户名不能为空',
   'login.form.password.errMsg': '密码不能为空',
   'login.form.login.errMsg': '登录出错，轻刷新重试',
@@ -11,8 +11,8 @@ export default {
   'login.form.login': '登录',
   'login.form.register': '注册账号',
   'login.form.registerMsg': '暂未实现注册功能，请联系管理员添加账号',
-  'login.banner.slogan1': '开箱即用的高质量模板',
-  'login.banner.subSlogan1': '丰富的的页面模板，覆盖大多数典型业务场景',
+  'login.banner.slogan1': '流量录制与回放平台',
+  'login.banner.subSlogan1': 'Groundhog命名灵感来源于土拨鼠之日，录制与回放与无限循环的人生相映射',
   'login.banner.slogan2': '内置了常见问题的解决方案',
   'login.banner.subSlogan2': '国际化，路由配置，状态管理应有尽有',
   'login.banner.slogan3': '接入可视化增强工具AUX',
