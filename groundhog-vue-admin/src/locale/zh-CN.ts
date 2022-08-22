@@ -26,6 +26,8 @@ import locale500 from '@/views/exception/500/locale/zh-CN';
 import localeUserInfo from '@/views/user/info/locale/zh-CN';
 import localeUserSetting from '@/views/user/setting/locale/zh-CN';
 
+import localeRecordTemplate from '@/views/record-template/template-list/locale/zh-CN';
+
 import localeSettings from './zh-CN/settings';
 
 export default {
@@ -44,6 +46,9 @@ export default {
   'menu.faq': '常见问题',
   'navbar.docs': '文档中心',
   'navbar.action.locale': '切换为中文',
+
+  'record.template': '录制模板',
+
   ...localeSettings,
   ...localeMessageBox,
   ...localeLogin,
@@ -64,4 +69,5 @@ export default {
   ...locale500,
   ...localeUserInfo,
   ...localeUserSetting,
+  ...localeRecordTemplate,
 };

@@ -44,6 +44,8 @@ export default {
   'menu.faq': 'FAQ',
   'navbar.docs': 'Docs',
   'navbar.action.locale': 'Switch to English',
+
+  'record.template': 'Record Template',
   ...localeSettings,
   ...localeMessageBox,
   ...localeLogin,
