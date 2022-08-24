@@ -32,6 +32,20 @@ export function queryPolicyList(params: PolicyParams) {
   });
 }
 
+/**
+ * 查询模板列表
+ * @param params 查询参数
+ * @returns 
+ */
+export function queryRecordTemplateList(params: PolicyParams) {
+  return axios.get<PolicyListRes>('/api/list/record/template', {
+    params,
+    paramsSerializer: (obj) => {
+      return qs.stringify(obj);
+    },
+  });
+}
+
 export interface ServiceRecord {
   id: number;
   title: string;

@@ -130,17 +130,24 @@
         <template #columns>
           <a-table-column :title="$t('templateLists.column.templateId')" data-index="number"/>
           <a-table-column :title="$t('templateLists.column.templateName')" data-index="name"/>
-          <a-table-column :title="$t('templateLists.column.templateDescription')" data-index="name"/>
-          <a-table-column :title="$t('templateLists.column.templateType')" data-index="name"/>
+          <a-table-column :title="$t('templateLists.column.templateDescription')" data-index="desc"/>
+          <a-table-column :title="$t('templateLists.column.templateType')" data-index="type"/>
           <a-table-column :title="$t('templateLists.column.createdTime')" data-index="createdTime"/>
-          <a-table-column :title="$t('templateLists.column.updateTime')" data-index="updateTime"/>
+          <a-table-column :title="$t('templateLists.column.updateTime')" data-index="updatedTime"/>
           <a-table-column :title="$t('templateLists.column.createdUser')" data-index="createdUser"/>
-          <a-table-column :title="$t('templateLists.column.updateUser')" data-index="updateUser"/>
+          <a-table-column :title="$t('templateLists.column.updateUser')" data-index="updatedUser"/>
           <a-table-column :title="$t('templateLists.columns.operations')" data-index="operations">
             <template #cell>
-              <a-button v-permission="['admin']" type="text" size="small">
-                {{ $t('templateLists.columns.operations.edit') }}
-              </a-button>
+              <a-col :span="16">
+                <a-space>
+                  <a-button v-permission="['admin']" type="outline" size="small">
+                    {{ $t('templateLists.columns.operations.edit') }}
+                  </a-button>
+                  <a-button v-permission="['admin']" type="outline" size="small">
+                    {{ $t('templateLists.columns.operations.record') }}
+                  </a-button>
+                </a-space>
+              </a-col>
             </template>
           </a-table-column>
         </template>
@@ -153,7 +160,7 @@
   import { computed, ref, reactive } from 'vue';
   import { useI18n } from 'vue-i18n';
   import useLoading from '@/hooks/loading';
-  import { queryPolicyList, PolicyRecord, PolicyParams } from '@/api/list';
+  import { queryRecordTemplateList, PolicyRecord, PolicyParams } from '@/api/list';
   import { Pagination } from '@/types/global';
   import type { SelectOptionData } from '@arco-design/web-vue/es/select/interface';
 
@@ -217,7 +224,7 @@
   ) => {
     setLoading(true);
     try {
-      const { data } = await queryPolicyList(params);
+      const { data } = await queryRecordTemplateList(params);
       renderData.value = data.list;
       pagination.current = params.current;
       pagination.total = data.total;

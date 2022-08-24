@@ -9,5 +9,6 @@ export default {
   'templateLists.column.createdUser': '创建人',
   'templateLists.column.updateUser': '更新人',
   'templateLists.columns.operations': '操作',
-  'templateLists.columns.operations.edit': '编辑'
+  'templateLists.columns.operations.edit': '编辑',
+  'templateLists.columns.operations.record': '流量录制',
 };
