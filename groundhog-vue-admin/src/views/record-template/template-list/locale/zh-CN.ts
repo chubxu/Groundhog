@@ -11,4 +11,9 @@ export default {
   'templateLists.columns.operations': '操作',
   'templateLists.columns.operations.edit': '编辑',
   'templateLists.columns.operations.record': '流量录制',
+
+  'templateLists.recordTemplateModal.add.title': '新增录制模板',
+  'templateLists.recordTemplateModal.edit.title': '编辑录制模板',
+  'templateLists.recordTemplateModal.templateName': '模板名称',
+  'templateLists.recordTemplateModal.templateDescription': '模板描述',
 };

@@ -102,7 +102,7 @@
       <a-row style="margin-bottom: 16px">
         <a-col :span="16">
           <a-space>
-            <a-button type="primary">
+            <a-button type="primary" @click="handleAddClick">
               <template #icon>
                 <icon-plus />
               </template>
@@ -140,7 +140,7 @@
             <template #cell>
               <a-col :span="16">
                 <a-space>
-                  <a-button v-permission="['admin']" type="outline" size="small">
+                  <a-button v-permission="['admin']" type="outline" size="small" @click="handleEditClick">
                     {{ $t('templateLists.columns.operations.edit') }}
                   </a-button>
                   <a-button v-permission="['admin']" type="outline" size="small">
@@ -153,6 +153,27 @@
         </template>
       </a-table>
     </a-card>
+
+    <!-- 新增录制模板弹出框 -->
+    <a-modal v-model:visible="recordTemplateModalVisible" :title="addOrEditRecordTemplate ? $t('templateLists.recordTemplateModal.add.title') : $t('templateLists.recordTemplateModal.edit.title')" 
+             @cancel="handleCancel" title-align="start" width="80%">
+      <a-form :model="form">
+        <a-form-item field="name" :label="$t('templateLists.recordTemplateModal.templateName')">
+          <a-input v-model="form.name" />
+        </a-form-item>
+        <a-form-item field="name" :label="$t('templateLists.recordTemplateModal.templateDescription')">
+          <a-input v-model="form.name" />
+        </a-form-item>
+        <a-form-item field="post" label="Post">
+          <a-select v-model="form.post">
+            <a-option value="post1">Post1</a-option>
+            <a-option value="post2">Post2</a-option>
+            <a-option value="post3">Post3</a-option>
+            <a-option value="post4">Post4</a-option>
+          </a-select>
+        </a-form-item>
+      </a-form>
+    </a-modal>
   </div>
 </template>
 
@@ -185,6 +206,15 @@
   const pagination = reactive({
     ...basePagination,
   });
+
+  // 新增录制模板data
+  const recordTemplateModalVisible = ref(false);
+  const addOrEditRecordTemplate = ref(true);
+  const form = reactive({
+    name: '',
+    post: ''
+  });
+
   const contentTypeOptions = computed<SelectOptionData[]>(() => [
     {
       label: t('searchTable.form.contentType.img'),
@@ -249,6 +279,18 @@
   const reset = () => {
     formModel.value = generateFormModel();
   };
+  const handleAddClick = () => {
+    addOrEditRecordTemplate.value = true;
+    recordTemplateModalVisible.value = true;
+  };
+  const handleCancel = () => {
+    recordTemplateModalVisible.value = false;
+  };
+  const handleEditClick = () => {
+    addOrEditRecordTemplate.value = false;
+    recordTemplateModalVisible.value = true;
+  };
+
 </script>
 
 <script lang="ts">
