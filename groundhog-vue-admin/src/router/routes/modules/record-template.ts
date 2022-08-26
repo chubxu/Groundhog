@@ -22,6 +22,17 @@ const RECORD_TEMPLATE: AppRouteRecordRaw = {
         roles: ['*'],
       },
     },
+    {
+      path: 'add-or-edit-record-template', // The midline path complies with SEO specifications
+      name: 'AddOrEditRecordTemplate',
+      component: () => import('@/views/record-template/add-or-edit-record-template/index.vue'),
+      meta: {
+        locale: 'record.template.addOrEditRecordTemplate',
+        requiresAuth: true,
+        roles: ['*'],
+        hideInMenu: true
+      },
+    },
   ],
 };
 

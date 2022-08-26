@@ -179,6 +179,7 @@
 
 <script lang="ts" setup>
   import { computed, ref, reactive } from 'vue';
+  import { useRouter } from 'vue-router';
   import { useI18n } from 'vue-i18n';
   import useLoading from '@/hooks/loading';
   import { queryRecordTemplateList, PolicyRecord, PolicyParams } from '@/api/list';
@@ -195,6 +196,7 @@
       status: '',
     };
   };
+  const router = useRouter()
   const { loading, setLoading } = useLoading(true);
   const { t } = useI18n();
   const renderData = ref<PolicyRecord[]>([]);
@@ -280,8 +282,9 @@
     formModel.value = generateFormModel();
   };
   const handleAddClick = () => {
-    addOrEditRecordTemplate.value = true;
-    recordTemplateModalVisible.value = true;
+    router.push({
+      name: 'AddOrEditRecordTemplate'
+    })
   };
   const handleCancel = () => {
     recordTemplateModalVisible.value = false;

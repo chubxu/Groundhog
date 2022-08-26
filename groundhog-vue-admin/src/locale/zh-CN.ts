@@ -26,7 +26,8 @@ import locale500 from '@/views/exception/500/locale/zh-CN';
 import localeUserInfo from '@/views/user/info/locale/zh-CN';
 import localeUserSetting from '@/views/user/setting/locale/zh-CN';
 
-import localeRecordTemplate from '@/views/record-template/template-list/locale/zh-CN';
+import localeRecordTemplateList from '@/views/record-template/template-list/locale/zh-CN';
+import localeRecordTemplateAddOrEditRecordTemplate from '@/views/record-template/add-or-edit-record-template/locale/zh-CN';
 
 import localeSettings from './zh-CN/settings';
 
@@ -69,5 +70,6 @@ export default {
   ...locale500,
   ...localeUserInfo,
   ...localeUserSetting,
-  ...localeRecordTemplate,
+  ...localeRecordTemplateList,
+  ...localeRecordTemplateAddOrEditRecordTemplate,
 };

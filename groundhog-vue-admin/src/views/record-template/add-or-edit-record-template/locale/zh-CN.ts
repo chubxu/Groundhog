@@ -1,0 +1,15 @@
+export default {
+  'record.template.addRecordTemplate': '新增模板列表',
+  'record.template.step.title.baseInfo': '输入基本信息',
+  'record.template.step.subTitle.baseInfo': '名称描述等',
+  'record.template.step.title.recordInterface': '输入采集接口',
+  'record.template.step.subTitle.recordInterface': '支持http、dubbo',
+  'record.template.step.title.selectPlugin': '选择插件',
+  'record.template.step.subTitle.selectPlugin': '支持mybatis、redis等',
+  'record.template.step.label.recordTemplateName': '名称',
+  'record.template.step.error.recordTemplateName.required': '请输入录制任务模板名称',
+  'record.template.step.label.recordTemplateDescripton': '描述',
+  'record.template.step.error.recordTemplateDescripton.required': '请输入录制任务模板描述',
+  'record.template.step.label.recordTime': '任务时长',
+  'record.template.step.error.recordTime.required': '请输入录制任务时长',
+};
