@@ -17,8 +17,8 @@
             <a-step :description="$t('record.template.step.subTitle.selectPlugin')">
               {{ $t('record.template.step.title.selectPlugin') }}
             </a-step>
-            <a-step :description="$t('record.template.step.subTitle.selectPlugin')">
-              {{ $t('record.template.step.title.selectPlugin') }}
+            <a-step>
+              {{ $t('record.template.step.label.success') }}
             </a-step>
           </a-steps>
           <keep-alive>
@@ -34,7 +34,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { ref } from 'vue';
+  import { ref, onMounted } from 'vue';
   import { useRoute } from 'vue-router';
   import useLoading from '@/hooks/loading';
   import {
@@ -45,19 +45,40 @@
   } from '@/api/form';
   import BaseInfo from './components/base-info.vue';
   import RecordInterface from './components/record-interface.vue';
-  import Success from './components/success.vue';
   import Plugin from './components/plugin.vue';
+  import Success from './components/success.vue';
 
+  /**
+   * 变量定义
+   */
   const route = useRoute();
   const pageType = ref(route.params.pageType);
   const { loading, setLoading } = useLoading(false);
   const step = ref(1);
   const submitModel = ref<UnitChannelModel>({} as UnitChannelModel);
+  
+
+  /**
+   * mounted生命周期钩子
+   */
+  onMounted(() => {
+    console.log(route)
+    if(route.params.pageType === '0') {
+      pageType.value = '0'
+    } else if (route.params.pageType === '1') {
+      pageType.value = '1'
+    }
+  })
+
+
+  /**
+   * 提交表单，创建录制任务模板
+   */
   const submitForm = async () => {
     setLoading(true);
     try {
       await submitChannelForm(submitModel.value); // The mock api default success
-      step.value = 3;
+      step.value = 4;
       submitModel.value = {} as UnitChannelModel; // init
     } catch (err) {
       // you can report use errorHandler or other
@@ -65,9 +86,14 @@
       setLoading(false);
     }
   };
+
+
+  /**
+   * 下一步或者上一步操作
+   */
   const changeStep = (
     direction: string | number,
-    model: BaseInfoModel | ChannelInfoModel
+    model: BaseInfoModel | ChannelInfoModel | any
   ) => {
     if (typeof direction === 'number') {
       step.value = direction;

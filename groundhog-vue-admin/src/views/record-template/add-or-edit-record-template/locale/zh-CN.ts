@@ -1,6 +1,6 @@
 export default {
-  'record.template.addRecordTemplate': '新增模板列表',
-  'record.template.editRecordTemplate': '编辑模板列表',
+  'record.template.addRecordTemplate': '新增或编辑模板列表',
+  'record.template.editRecordTemplate': '新增或编辑模板列表',
 
   'record.template.step.title.baseInfo': '输入基本信息',
   'record.template.step.subTitle.baseInfo': '名称描述等',
@@ -8,6 +8,7 @@ export default {
   'record.template.step.subTitle.recordInterface': '支持http、dubbo',
   'record.template.step.title.selectPlugin': '选择插件',
   'record.template.step.subTitle.selectPlugin': '支持mybatis、redis等',
+  'record.template.step.label.success': '创建成功',
 
   // step1
   'record.template.step.label.recordTemplateName': '名称',
@@ -32,5 +33,10 @@ export default {
   'record.template.step.label.placeholder.dubbo.interface': '支持正则表达式',
 
   // step3
-  'record.template.step.label.plugin': '插件列表'
+  'record.template.step.label.plugin': '插件列表',
+
+  // step4
+  'record.template.step.success.title': '录制模板创建成功',
+  'record.template.step.button.back.list': '返回模板列表',
+  'record.template.step.button.recreate': '再次创建',
 };
