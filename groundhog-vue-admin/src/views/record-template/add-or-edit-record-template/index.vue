@@ -17,11 +17,15 @@
             <a-step :description="$t('record.template.step.subTitle.selectPlugin')">
               {{ $t('record.template.step.title.selectPlugin') }}
             </a-step>
+            <a-step :description="$t('record.template.step.subTitle.selectPlugin')">
+              {{ $t('record.template.step.title.selectPlugin') }}
+            </a-step>
           </a-steps>
           <keep-alive>
             <BaseInfo v-if="step === 1" @change-step="changeStep" />
             <RecordInterface v-else-if="step === 2" @change-step="changeStep" />
-            <Success v-else-if="step === 3" @change-step="changeStep" />
+            <Plugin v-else-if="step === 3" @change-step="changeStep" />
+            <Success v-else-if="step === 4" @change-step="changeStep" />
           </keep-alive>
         </div>
       </a-card>
@@ -42,6 +46,7 @@
   import BaseInfo from './components/base-info.vue';
   import RecordInterface from './components/record-interface.vue';
   import Success from './components/success.vue';
+  import Plugin from './components/plugin.vue';
 
   const route = useRoute();
   const pageType = ref(route.params.pageType);

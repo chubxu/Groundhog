@@ -78,7 +78,7 @@ const formData = ref<ChannelInfoModel>({
 const onNextClick = async () => {
   const res = await formRef.value?.validate();
   if (!res) {
-    emits('changeStep', 'submit', { ...formData.value });
+    emits('changeStep', 'forward', { ...formData.value });
   }
 };
 const goPrev = () => {

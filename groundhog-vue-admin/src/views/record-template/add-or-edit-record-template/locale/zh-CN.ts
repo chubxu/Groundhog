@@ -30,4 +30,7 @@ export default {
   'record.template.step.label.dubbo.interface': 'dubbo接口',
   'record.template.step.label.dubbo.interface.required': '请输入dubbo接口',
   'record.template.step.label.placeholder.dubbo.interface': '支持正则表达式',
+
+  // step3
+  'record.template.step.label.plugin': '插件列表'
 };
