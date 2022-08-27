@@ -7,7 +7,7 @@
           {{ $t(pageType == '0' ? 'record.template.addRecordTemplate' : 'record.template.editRecordTemplate') }}
         </template>
         <div class="wrapper">
-          <a-steps v-model:current="step" style="width: 580px" line-less class="steps">
+          <a-steps v-model:current="step" style="width: 780px" line-less class="steps">
             <a-step :description="$t('record.template.step.subTitle.baseInfo')">
               {{ $t('record.template.step.title.baseInfo') }}
             </a-step>
@@ -20,7 +20,7 @@
           </a-steps>
           <keep-alive>
             <BaseInfo v-if="step === 1" @change-step="changeStep" />
-            <ChannelInfo v-else-if="step === 2" @change-step="changeStep" />
+            <RecordInterface v-else-if="step === 2" @change-step="changeStep" />
             <Success v-else-if="step === 3" @change-step="changeStep" />
           </keep-alive>
         </div>
@@ -40,9 +40,9 @@
     UnitChannelModel,
   } from '@/api/form';
   import BaseInfo from './components/base-info.vue';
-  import ChannelInfo from './components/channel-info.vue';
+  import RecordInterface from './components/record-interface.vue';
   import Success from './components/success.vue';
-  
+
   const route = useRoute();
   const pageType = ref(route.params.pageType);
   const { loading, setLoading } = useLoading(false);

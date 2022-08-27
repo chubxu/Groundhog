@@ -10,7 +10,7 @@
       //   message: $t('stepForm.form.error.activityName.pattern'),
       // },
     ]">
-      <a-input v-model="formData.recordTemplateName" :placeholder="$t('stepForm.placeholder.activityName')" />
+      <a-input v-model="formData.recordTemplateName" :placeholder="$t('record.template.step.label.placeholder.recordTemplateName')" />
     </a-form-item>
     <a-form-item field="recordTemplateDescription" :label="$t('record.template.step.label.recordTemplateDescripton')" :rules="[
       {
@@ -18,7 +18,7 @@
         message: $t('record.template.step.error.recordTemplateDescripton.required'),
       },
     ]">
-      <a-input v-model="formData.recordTemplateDescription" :placeholder="$t('stepForm.placeholder.activityName')" />
+      <a-input v-model="formData.recordTemplateDescription" :placeholder="$t('record.template.step.label.placeholder.recordTemplateDescripton')" />
     </a-form-item>
     <a-form-item field="recordTime" :label="$t('record.template.step.label.recordTime')" :rules="[
       {
@@ -26,7 +26,7 @@
         message: $t('record.template.step.error.recordTime.required'),
       },
     ]">
-      <a-input v-model="formData.recordTime" :placeholder="$t('stepForm.placeholder.activityName')" />
+      <a-input v-model="formData.recordTime" :placeholder="$t('record.template.step.label.placeholder.recordTime')" />
     </a-form-item>
     <a-form-item>
       <a-button type="primary" @click="onNextClick">

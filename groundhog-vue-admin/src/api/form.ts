@@ -6,11 +6,10 @@ export interface BaseInfoModel {
   recordTime: string;
 }
 export interface ChannelInfoModel {
-  advertisingSource: string;
-  advertisingMedia: string;
-  keyword: string[];
-  pushNotify: boolean;
-  advertisingContent: string;
+  httpInterface: string;
+  httpInterfaceSampleRate: string;
+  dubboInterface: string;
+  dubboInterfaceSampleRate: string;
 }
 
 export type UnitChannelModel = BaseInfoModel & ChannelInfoModel;
