@@ -2,103 +2,6 @@
   <div class="container">
     <Breadcrumb :items="['record.template', 'record.template.templateLists']" />
     <a-card class="general-card" :title="$t('record.template.templateLists')">
-      <!-- <a-row>
-        <a-col :flex="1">
-          <a-form
-            :model="formModel"
-            :label-col-props="{ span: 6 }"
-            :wrapper-col-props="{ span: 18 }"
-            label-align="left"
-          >
-            <a-row :gutter="16">
-              <a-col :span="8">
-                <a-form-item
-                  field="number"
-                  :label="$t('searchTable.form.number')"
-                >
-                  <a-input
-                    v-model="formModel.number"
-                    :placeholder="$t('searchTable.form.number.placeholder')"
-                  />
-                </a-form-item>
-              </a-col>
-              <a-col :span="8">
-                <a-form-item field="name" :label="$t('searchTable.form.name')">
-                  <a-input
-                    v-model="formModel.name"
-                    :placeholder="$t('searchTable.form.name.placeholder')"
-                  />
-                </a-form-item>
-              </a-col>
-              <a-col :span="8">
-                <a-form-item
-                  field="contentType"
-                  :label="$t('searchTable.form.contentType')"
-                >
-                  <a-select
-                    v-model="formModel.contentType"
-                    :options="contentTypeOptions"
-                    :placeholder="$t('searchTable.form.selectDefault')"
-                  />
-                </a-form-item>
-              </a-col>
-              <a-col :span="8">
-                <a-form-item
-                  field="filterType"
-                  :label="$t('searchTable.form.filterType')"
-                >
-                  <a-select
-                    v-model="formModel.filterType"
-                    :options="filterTypeOptions"
-                    :placeholder="$t('searchTable.form.selectDefault')"
-                  />
-                </a-form-item>
-              </a-col>
-              <a-col :span="8">
-                <a-form-item
-                  field="createdTime"
-                  :label="$t('searchTable.form.createdTime')"
-                >
-                  <a-range-picker
-                    v-model="formModel.createdTime"
-                    style="width: 100%"
-                  />
-                </a-form-item>
-              </a-col>
-              <a-col :span="8">
-                <a-form-item
-                  field="status"
-                  :label="$t('searchTable.form.status')"
-                >
-                  <a-select
-                    v-model="formModel.status"
-                    :options="statusOptions"
-                    :placeholder="$t('searchTable.form.selectDefault')"
-                  />
-                </a-form-item>
-              </a-col>
-            </a-row>
-          </a-form>
-        </a-col>
-        <a-divider style="height: 84px" direction="vertical" />
-        <a-col :flex="'86px'" style="text-align: right">
-          <a-space direction="vertical" :size="18">
-            <a-button type="primary" @click="search">
-              <template #icon>
-                <icon-search />
-              </template>
-              {{ $t('searchTable.form.search') }}
-            </a-button>
-            <a-button @click="reset">
-              <template #icon>
-                <icon-refresh />
-              </template>
-              {{ $t('searchTable.form.reset') }}
-            </a-button>
-          </a-space>
-        </a-col>
-      </a-row>
-      <a-divider style="margin-top: 0" /> -->
       <a-row style="margin-bottom: 16px">
         <a-col :span="16">
           <a-space>
@@ -108,23 +11,8 @@
               </template>
               {{ $t('searchTable.operation.create') }}
             </a-button>
-            <!-- <a-upload action="/">
-              <template #upload-button>
-                <a-button>
-                  {{ $t('searchTable.operation.import') }}
-                </a-button>
-              </template>
-            </a-upload> -->
           </a-space>
         </a-col>
-        <!-- <a-col :span="8" style="text-align: right">
-          <a-button>
-            <template #icon>
-              <icon-download />
-            </template>
-            {{ $t('searchTable.operation.download') }}
-          </a-button>
-        </a-col> -->
       </a-row>
       <a-table row-key="id" :loading="loading" :pagination="pagination" :data="renderData" :bordered="false" @page-change="onPageChange">
         <template #columns>
@@ -143,7 +31,7 @@
                   <a-button v-permission="['admin']" type="outline" size="small" @click="handleEditClick">
                     {{ $t('templateLists.columns.operations.edit') }}
                   </a-button>
-                  <a-button v-permission="['admin']" type="outline" size="small">
+                  <a-button v-permission="['admin']" type="outline" size="small" @click="handleRecordClick">
                     {{ $t('templateLists.columns.operations.record') }}
                   </a-button>
                 </a-space>
@@ -154,24 +42,62 @@
       </a-table>
     </a-card>
 
-    <!-- 新增录制模板弹出框 -->
-    <a-modal v-model:visible="recordTemplateModalVisible" :title="addOrEditRecordTemplate ? $t('templateLists.recordTemplateModal.add.title') : $t('templateLists.recordTemplateModal.edit.title')" 
-             @cancel="handleCancel" title-align="start" width="80%">
-      <a-form :model="form">
-        <a-form-item field="name" :label="$t('templateLists.recordTemplateModal.templateName')">
+    <!-- 新增录制任务弹出框 -->
+    <a-modal v-model:visible="recordModalVisible" :title="$t('templateLists.recordModal.add.title')" 
+             @before-ok="handleBeforeOk" @cancel="handleCancel" title-align="start" width="40%" :mask-closable="false">
+      <a-form ref="formRef" :model="form" layout="vertical">
+        <a-form-item field="name" :label="$t('templateLists.recordModal.recordTaskDescription')" :rules="[
+          {
+            required: true,
+            message: $t('templateLists.recordModal.recordTaskDescription.required'),
+          }
+        ]">
           <a-input v-model="form.name" />
-        </a-form-item>
-        <a-form-item field="name" :label="$t('templateLists.recordTemplateModal.templateDescription')">
-          <a-input v-model="form.name" />
-        </a-form-item>
-        <a-form-item field="post" label="Post">
-          <a-select v-model="form.post">
-            <a-option value="post1">Post1</a-option>
-            <a-option value="post2">Post2</a-option>
-            <a-option value="post3">Post3</a-option>
-            <a-option value="post4">Post4</a-option>
-          </a-select>
-        </a-form-item>
+        </a-form-item>      
+        <a-row :gutter="16">
+          <a-col :span="12">
+            <a-form-item field="name" :label="$t('templateLists.recordModal.recordMachineIp')" :rules="[
+              {
+                required: true,
+                message: $t('templateLists.recordModal.recordMachineIp.required'),
+              }
+            ]">
+              <a-input v-model="form.name" />
+            </a-form-item>
+          </a-col>
+          <a-col :span="12">
+            <a-form-item field="name" :label="$t('templateLists.recordModal.recordMachinePort')" :rules="[
+              {
+                required: true,
+                message: $t('templateLists.recordModal.recordMachinePort.required'),
+              }
+            ]">
+              <a-input v-model="form.name" />
+            </a-form-item>
+          </a-col>
+        </a-row>
+        <a-row :gutter="16">
+          <a-col :span="12">
+            <a-form-item field="name" :label="$t('templateLists.recordModal.recordMachineUser')" :rules="[
+              {
+                required: true,
+                message: $t('templateLists.recordModal.recordMachineUser.required'),
+              }
+            ]">
+              <a-input v-model="form.name" />
+            </a-form-item>
+          </a-col>
+          <a-col :span="12">
+            <a-form-item field="name" :label="$t('templateLists.recordModal.recordMachinePassword')" :rules="[
+              {
+                required: true,
+                message: $t('templateLists.recordModal.recordMachinePassword.required'),
+              }
+            ]">
+              <a-input v-model="form.name" />
+            </a-form-item>
+          </a-col>
+        </a-row>
       </a-form>
     </a-modal>
   </div>
@@ -185,6 +111,7 @@
   import { queryRecordTemplateList, PolicyRecord, PolicyParams } from '@/api/list';
   import { Pagination } from '@/types/global';
   import type { SelectOptionData } from '@arco-design/web-vue/es/select/interface';
+  import { FormInstance } from '@arco-design/web-vue/es/form';
 
   const generateFormModel = () => {
     return {
@@ -210,8 +137,8 @@
   });
 
   // 新增录制模板data
-  const recordTemplateModalVisible = ref(false);
-  const addOrEditRecordTemplate = ref(true);
+  const recordModalVisible = ref(false);
+  const formRef = ref<FormInstance>();
   const form = reactive({
     name: '',
     post: ''
@@ -251,6 +178,8 @@
       value: 'offline',
     },
   ]);
+  
+  
   const fetchData = async (
     params: PolicyParams = { current: 1, pageSize: 20 }
   ) => {
@@ -267,33 +196,42 @@
     }
   };
 
+
   const search = () => {
     fetchData({
       ...basePagination,
       ...formModel.value,
     } as unknown as PolicyParams);
   };
+
+
   const onPageChange = (current: number) => {
     fetchData({ ...basePagination, current });
   };
 
+
   fetchData();
+
+
   const reset = () => {
     formModel.value = generateFormModel();
   };
 
-  // 跳转新增录制模板
+
+  /**
+   * 跳转新增录制模板
+   */
   const handleAddClick = () => {
     router.push({
       name: 'AddOrEditRecordTemplate',
       params: { pageType: '0' }
     })
   };
-  const handleCancel = () => {
-    recordTemplateModalVisible.value = false;
-  };
+  
 
-  // 跳转编辑录制模板
+  /**
+   * 跳转编辑录制模板
+   */
   const handleEditClick = () => {
     router.push({
       name: 'AddOrEditRecordTemplate',
@@ -301,6 +239,36 @@
     })
   };
 
+
+  /**
+   * 流量录制弹出框
+   */
+  const handleRecordClick = () => {
+    recordModalVisible.value = true;
+  };
+
+
+  /**
+   * 确认新增流量录制任务
+   */
+  const handleBeforeOk = async (done) => {
+    const res = await formRef.value?.validate();
+    if (!res) {
+      console.log('aaa');
+      done();
+    } else {
+      console.log('bbb')
+      done(false);
+    }
+  };
+
+
+  /**
+   * 流量录制弹出框取消事件
+   */
+  const handleCancel = () => {
+    recordModalVisible.value = false;
+  };
 </script>
 
 <script lang="ts">

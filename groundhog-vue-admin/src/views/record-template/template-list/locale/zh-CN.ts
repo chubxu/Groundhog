@@ -12,8 +12,18 @@ export default {
   'templateLists.columns.operations.edit': '编辑',
   'templateLists.columns.operations.record': '流量录制',
 
-  'templateLists.recordTemplateModal.add.title': '新增录制模板',
   'templateLists.recordTemplateModal.edit.title': '编辑录制模板',
   'templateLists.recordTemplateModal.templateName': '模板名称',
-  'templateLists.recordTemplateModal.templateDescription': '模板描述',
+  
+  'templateLists.recordModal.add.title': '新增录制任务',
+  'templateLists.recordModal.recordTaskDescription': '录制任务描述',
+  'templateLists.recordModal.recordTaskDescription.required': '请输入录制任务描述',
+  'templateLists.recordModal.recordMachineIp': '录制机器IP',
+  'templateLists.recordModal.recordMachineIp.required': '请输入录制机器IP',
+  'templateLists.recordModal.recordMachinePort': '录制机器Port',
+  'templateLists.recordModal.recordMachinePort.required': '请输入录制机器PORT',
+  'templateLists.recordModal.recordMachineUser': '录制机器账号',
+  'templateLists.recordModal.recordMachineUser.required': '请输入录制机器账号',
+  'templateLists.recordModal.recordMachinePassword': '录制机器密码',
+  'templateLists.recordModal.recordMachinePassword.required': '请输入录制机器密码',
 };
