@@ -1,10 +1,10 @@
 <template>
   <div class="container">
-    <Breadcrumb :items="['record.template', 'record.template.templateLists', 'record.template.addRecordTemplate']" />
+    <Breadcrumb :items="['record.template', 'record.template.templateLists', pageType == '0' ? 'record.template.addRecordTemplate' : 'record.template.editRecordTemplate']" />
     <a-spin :loading="loading" style="width: 100%">
       <a-card class="general-card">
         <template #title>
-          {{ $t('record.template.addRecordTemplate') }}
+          {{ $t(pageType == '0' ? 'record.template.addRecordTemplate' : 'record.template.editRecordTemplate') }}
         </template>
         <div class="wrapper">
           <a-steps v-model:current="step" style="width: 580px" line-less class="steps">
@@ -31,6 +31,7 @@
 
 <script lang="ts" setup>
   import { ref } from 'vue';
+  import { useRoute } from 'vue-router';
   import useLoading from '@/hooks/loading';
   import {
     submitChannelForm,
@@ -41,7 +42,9 @@
   import BaseInfo from './components/base-info.vue';
   import ChannelInfo from './components/channel-info.vue';
   import Success from './components/success.vue';
-
+  
+  const route = useRoute();
+  const pageType = ref(route.params.pageType);
   const { loading, setLoading } = useLoading(false);
   const step = ref(1);
   const submitModel = ref<UnitChannelModel>({} as UnitChannelModel);

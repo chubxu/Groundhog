@@ -281,17 +281,24 @@
   const reset = () => {
     formModel.value = generateFormModel();
   };
+
+  // 跳转新增录制模板
   const handleAddClick = () => {
     router.push({
-      name: 'AddOrEditRecordTemplate'
+      name: 'AddOrEditRecordTemplate',
+      params: { pageType: '0' }
     })
   };
   const handleCancel = () => {
     recordTemplateModalVisible.value = false;
   };
+
+  // 跳转编辑录制模板
   const handleEditClick = () => {
-    addOrEditRecordTemplate.value = false;
-    recordTemplateModalVisible.value = true;
+    router.push({
+      name: 'AddOrEditRecordTemplate',
+      params: { pageType: '1' }
+    })
   };
 
 </script>

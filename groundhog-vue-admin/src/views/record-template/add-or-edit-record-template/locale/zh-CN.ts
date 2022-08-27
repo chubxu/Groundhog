@@ -1,5 +1,6 @@
 export default {
   'record.template.addRecordTemplate': '新增模板列表',
+  'record.template.editRecordTemplate': '编辑模板列表',
   'record.template.step.title.baseInfo': '输入基本信息',
   'record.template.step.subTitle.baseInfo': '名称描述等',
   'record.template.step.title.recordInterface': '输入采集接口',
