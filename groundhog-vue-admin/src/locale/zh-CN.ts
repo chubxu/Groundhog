@@ -29,6 +29,9 @@ import localeUserSetting from '@/views/user/setting/locale/zh-CN';
 import localeRecordTemplateList from '@/views/record-template/template-list/locale/zh-CN';
 import localeRecordTemplateAddOrEditRecordTemplate from '@/views/record-template/add-or-edit-record-template/locale/zh-CN';
 
+import localeRecordTaskList from '@/views/task-list/record-task-list/locale/zh-CN';
+import localeReplayTaskList from '@/views/task-list/replay-task-list/locale/zh-CN';
+
 import localeSettings from './zh-CN/settings';
 
 export default {
@@ -49,6 +52,7 @@ export default {
   'navbar.action.locale': '切换为中文',
 
   'record.template': '录制模板',
+  'task.list': '任务列表',
 
   ...localeSettings,
   ...localeMessageBox,
@@ -72,4 +76,6 @@ export default {
   ...localeUserSetting,
   ...localeRecordTemplateList,
   ...localeRecordTemplateAddOrEditRecordTemplate,
+  ...localeRecordTaskList,
+  ...localeReplayTaskList
 };
