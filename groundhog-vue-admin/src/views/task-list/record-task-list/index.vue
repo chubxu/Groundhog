@@ -2,18 +2,6 @@
   <div class="container">
     <Breadcrumb :items="['task.list', 'record.task.list']" />
     <a-card class="general-card" :title="$t('record.task.list')">
-      <!-- <a-row style="margin-bottom: 16px">
-        <a-col :span="16">
-          <a-space>
-            <a-button type="primary" @click="handleAddClick">
-              <template #icon>
-                <icon-plus />
-              </template>
-              {{ $t('searchTable.operation.create') }}
-            </a-button>
-          </a-space>
-        </a-col>
-      </a-row> -->
       <a-table row-key="id" :loading="loading" :pagination="pagination" :data="renderData" :bordered="false" @page-change="onPageChange">
         <template #columns>
           <a-table-column :title="$t('recordTaskList.column.taskId')" data-index="number"/>
@@ -28,9 +16,6 @@
             <template #cell>
               <a-col :span="16">
                 <a-space>
-                  <!-- <a-button v-permission="['admin']" type="outline" size="small" @click="handleEditClick">
-                    {{ $t('templateLists.columns.operations.edit') }}
-                  </a-button> -->
                   <a-button v-permission="['admin']" type="outline" size="small" @click="handleRecordClick">
                     {{ $t('recordTaskList.columns.operations.reRecord') }}
                   </a-button>
