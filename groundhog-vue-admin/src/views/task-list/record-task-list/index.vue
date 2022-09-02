@@ -3,6 +3,9 @@
     <Breadcrumb :items="['task.list', 'record.task.list']" />
     <a-card class="general-card" :title="$t('record.task.list')">
       <a-table row-key="id" :loading="loading" :pagination="pagination" :data="renderData" :bordered="false" @page-change="onPageChange">
+        <template #expand-row>
+          abcd
+        </template>
         <template #columns>
           <a-table-column :title="$t('recordTaskList.column.taskId')" data-index="number"/>
           <!-- <a-table-column :title="$t('recordTaskList.column.taskName')" data-index="name"/> -->
