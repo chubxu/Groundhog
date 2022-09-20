@@ -19,33 +19,48 @@
         <maven.compiler.target>11</maven.compiler.target>
 
         <spring.boot.version>2.7.3</spring.boot.version>
+        <mariadb.java.client>3.0.7</mariadb.java.client>
         <mybatis.plus.boot.starter.version>3.5.2</mybatis.plus.boot.starter.version>
         <lombok.version>1.18.24</lombok.version>
+        <slf4j.api>1.7.30</slf4j.api>
     </properties>
 
     <dependencyManagement>
         <dependencies>
-            <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-web</artifactId>
                 <version>${spring.boot.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-jdbc</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
 
 
-            <!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-boot-starter -->
+            <dependency>
+                <groupId>org.mariadb.jdbc</groupId>
+                <artifactId>mariadb-java-client</artifactId>
+                <version>${mariadb.java.client}</version>
+            </dependency>
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mybatis.plus.boot.starter.version}</version>
             </dependency>
 
-            <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
                 <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.api}</version>
             </dependency>
 
         </dependencies>

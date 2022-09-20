@@ -11,6 +11,5 @@ public class GroundhogConsoleApplication {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-
     }
 }
