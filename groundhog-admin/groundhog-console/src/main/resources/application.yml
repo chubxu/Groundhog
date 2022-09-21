@@ -4,3 +4,9 @@ spring:
     username: root
     password: 123456
     url: jdbc:mariadb://127.0.0.1:3306/groundhog?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8&useSSL=false
+
+mybatis-plus:
+  global-config:
+    banner: false
+    db-config:
+      tablePrefix: t_
