@@ -12,6 +12,7 @@
     <modules>
         <module>groundhog-console</module>
         <module>groundhog-dal</module>
+        <module>groundhog-mybatis-plus-generator</module>
     </modules>
 
     <properties>
@@ -54,7 +55,11 @@
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mybatis.plus.boot.starter.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-generator</artifactId>
+                <version>${mybatis.plus.boot.starter.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>org.projectlombok</groupId>
