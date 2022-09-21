@@ -1,5 +1,6 @@
 package org.chubxu.groundhog.console.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.chubxu.groundhog.console.entity.R;
 import org.chubxu.groundhog.console.service.TaskTemplateService;
 import org.chubxu.groundhog.dal.entity.TaskTemplate;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 import java.util.List;
 
+@Tag(name = "TaskTemplateController", description = "任务模板管理")
 @RestController
 @RequestMapping("/api/task-template")
 public class TaskTemplateController {
