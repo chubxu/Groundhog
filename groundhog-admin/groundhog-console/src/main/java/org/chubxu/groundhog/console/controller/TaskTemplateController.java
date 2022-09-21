@@ -1,5 +1,6 @@
 package org.chubxu.groundhog.console.controller;
 
+import org.chubxu.groundhog.console.entity.R;
 import org.chubxu.groundhog.console.service.TaskTemplateService;
 import org.chubxu.groundhog.dal.entity.TaskTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +17,8 @@ public class TaskTemplateController {
     private TaskTemplateService taskTemplateService;
 
     @GetMapping("/list")
-    public List<TaskTemplate> selectList() {
-        return taskTemplateService.selectList();
+    public R<List<TaskTemplate>> selectList() {
+        List<TaskTemplate> taskTemplates = taskTemplateService.selectList();
+        return R.success(taskTemplates);
     }
 }

@@ -13,6 +13,7 @@
         <module>groundhog-console</module>
         <module>groundhog-dal</module>
         <module>groundhog-mybatis-plus-generator</module>
+        <module>groundhog-common</module>
     </modules>
 
     <properties>
