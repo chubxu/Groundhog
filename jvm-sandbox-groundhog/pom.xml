@@ -176,6 +176,8 @@
         <module>sandbox-mgr-provider</module>
         <module>sandbox-module-starter</module>
         <module>sandbox-debug-module</module>
+        <module>groundhog-module</module>
+        <module>custom-module/groundhog-record-module</module>
     </modules>
 
     <dependencyManagement>
